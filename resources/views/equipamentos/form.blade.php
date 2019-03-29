@@ -1,7 +1,7 @@
 @if (Gate::allows('admin'))
 <div class="form-group">
-    <label for="user_id">Número USP do Responsável</label>
-    <input type="text" class="form-control" id="user_id" name="user_id" placeholder="3141592" value="{{ $equipamento->user_id or old('user_id') }}">
+    <label for="username">Número USP do Responsável</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="3141592" value="{{ $username or old('username') }}">
 </div>
 @endif
 
