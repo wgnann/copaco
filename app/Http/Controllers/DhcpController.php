@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rede;
-use App\Equipamentos;
+use App\Equipamento;
 use App\Config;
 
 use App\Utils\NetworkOps;
@@ -18,7 +18,23 @@ class DhcpController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['dhcpd']);
+        $this->middleware('auth')->except(['dhcpd', 'dhcpd_hosts']);
+    }
+
+    public function dhcpd_hosts(Request $request)
+    {
+        if($request->consumer_deploy_key != config('copaco.consumer_deploy_key')) {
+            return response('Unauthorized action.', 403);
+        }
+
+        $dhcp = "# ".date(DATE_RFC2822)."\n";
+
+        $equipamentos = Equipamento::all();
+        foreach ($equipamentos as $equipamento) {
+          $dhcp .= "host equipamento{$equipamento->id} { hardware ethernet {$equipamento->macaddress}; }\n";
+        }
+
+        return response($dhcp)->header('Content-Type', 'text/plain');
     }
 
     public function dhcpd(Request $request)

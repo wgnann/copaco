@@ -20,4 +20,5 @@ Route::post('/freeradius/sincronize', 'FreeradiusController@sincronize');
 
 # APIs
 Route::post('/dhcpd.conf', 'DhcpController@dhcpd');
+Route::post('/dhcpd.hosts.conf', 'DhcpController@dhcpd_hosts');
 Route::post('/freeradius/authorize-file', 'FreeradiusController@file');

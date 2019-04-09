@@ -19,6 +19,16 @@
 <br />
 
 <div>
+    <form action="/dhcpd.hosts.conf" method="post">
+        {{csrf_field()}}
+        <input type="hidden" name="consumer_deploy_key" value="{{ $consumer_deploy_key }}">
+        <button class="btn btn-primary" type="submit">Gerar hosts</button>
+    </form>
+</div>
+
+<br />
+
+<div>
     <form action="/freeradius/authorize-file" method="post">
         {{csrf_field()}}
         <input type="hidden" name="consumer_deploy_key" value="{{ $consumer_deploy_key }}">
