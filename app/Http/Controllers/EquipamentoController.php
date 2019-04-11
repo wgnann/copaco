@@ -110,14 +110,14 @@ class EquipamentoController extends Controller
         $user = Auth::user();
         if (Gate::allows('admin')) {
             $username = $request->username;
-            $existing_user = User::where('username_senhaunica', $username)->first();
+            $existing_user = User::where('username', $username)->first();
 
             /* se o usuário não existir, criamos
                TODO: validar NUSP e obter esses dados do replicado
             */
             if (!$existing_user) {
                 $u = new User;
-                $u->username_senhaunica = $username;
+                $u->username = $username;
                 $u->name = $username;
                 $u->email = $username."@usp.br";
                 $u->save();
@@ -285,7 +285,7 @@ class EquipamentoController extends Controller
         $user = Auth::user();
         $redes = $user->redesComAcesso();
         $owner = User::where('id', $equipamento->user_id)->first();
-        $username = $owner->username_senhaunica;
+        $username = $owner->username;
 
         $equipamento->vencimento = Carbon::createFromFormat('Y-m-d', $equipamento->vencimento)->format('d/m/Y');
         return view('equipamentos.edit', compact('equipamento', 'redes', 'username'));
