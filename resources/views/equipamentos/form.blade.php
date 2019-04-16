@@ -2,6 +2,7 @@
 <div class="form-group">
     <label for="username">Número USP do Responsável</label>
     <input type="text" class="form-control" id="username" name="username" placeholder="3141592" value="{{ $username or old('username') }}">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#findNUSP">Encontrar NUSP</button>
 </div>
 @endif
 

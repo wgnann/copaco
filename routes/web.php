@@ -22,3 +22,6 @@ Route::post('/freeradius/sincronize', 'FreeradiusController@sincronize');
 Route::post('/dhcpd.conf', 'DhcpController@dhcpd');
 Route::post('/dhcpd.hosts.conf', 'DhcpController@dhcpd_hosts');
 Route::post('/freeradius/authorize-file', 'FreeradiusController@file');
+
+# AJAX
+Route::post('/nusp', 'NUSPController@findNUSP');

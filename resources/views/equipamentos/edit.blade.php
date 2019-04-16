@@ -6,20 +6,20 @@
 
 @section('content')
     <div class="row">
-    @include('messages.flash')
-    @include('messages.errors')
+        @include('messages.flash')
+        @include('messages.errors')
 
+        @include('equipamentos.modal')
 
-    <div class="col-md-6">
-        <form action="{{ url('equipamentos'). '/' . $equipamento->id }}" method='post'>
+        <div class="col-md-6">
+            <form action="{{ url('equipamentos'). '/' . $equipamento->id }}" method='post'>
             {{ csrf_field() }} 
             {{ method_field('patch') }}
             @include('equipamentos.form')
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
-@endsection
+@stop
 
 @section('css')
     @include('equipamentos.css')
@@ -27,4 +27,5 @@
 
 @section('js')
     @include('equipamentos.js')
+    @include('equipamentos.modaljs')
 @stop

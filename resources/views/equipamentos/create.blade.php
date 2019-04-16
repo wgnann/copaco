@@ -9,6 +9,8 @@
         @include('messages.flash')
         @include('messages.errors')
 
+        @include('equipamentos.modal')
+
         <div class="col-md-6">
             <form action="{{ url('equipamentos') }}" method="post">
             {{ csrf_field() }}
@@ -24,4 +26,5 @@
 
 @section('js')
     @include('equipamentos.js')
+    @include('equipamentos.modaljs')
 @stop
